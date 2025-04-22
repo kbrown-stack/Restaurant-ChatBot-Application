@@ -1,0 +1,26 @@
+<!-- THis renders the front end side of the application -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restaurant Chatbot</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-header">
+      <h1>Restaurant Assistant</h1>
+    </div>
+    <div class="chat-messages" id="chat-messages"></div>
+    <form id="chat-form" class="chat-input">
+      <input type="text" id="message-input" placeholder="Type your message here..." autocomplete="off">
+      <button type="submit">Send</button>
+    </form>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -56,6 +56,7 @@ io.on('connection', (socket) => {
   socket.on('user_message', async (message) => {
     try {
       if (message.toLowerCase() === 'pay') {
+        
         // Initialize payment
         const paymentData = await chatService.initializePayment(deviceId);
         if (paymentData.success) {

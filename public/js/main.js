@@ -14,11 +14,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const paymentReference = urlParams.get('reference');
     
     // Initialize socket connection
-    const socket = io({
+    const socket = io('https://restaurant-chatbot-application.onrender.com',{  // my deployed page
       query: {
         deviceId: deviceId
       }
     });
+
+    // Adding a conenction log
+
+    socket.on('connect', () => {
+      console.log('socket connected:', socket.id); // this helps to log socket connection.
+    });
+
+    socket.on('disconnect', () => {
+      console.warn('socket disconnected');
+    })
+
+    socket.on('connect_error', (err) => {
+      console.error('Connection Failed:', err.message); // logging connection errors.
+    })
+
     
     const chatMessages = document.getElementById('chat-messages');
     const chatForm = document.getElementById('chat-form');

@@ -14,11 +14,35 @@ document.addEventListener('DOMContentLoaded', () => {
     const paymentReference = urlParams.get('reference');
     
     // Initialize socket connection
-    const socket = io('https://restaurant-chatbot-application.onrender.com',{  // my deployed page
-      query: {
-        deviceId: deviceId
-      }
-    });
+
+    // const socket = io('',{  // my deployed page
+    //   query: {
+    //     deviceId: deviceId
+    //   }
+    // });
+
+    // const socket = io( "https://restaurant-chatbot-application.onrender.com",
+    //   {query:{
+    //     deviceId: deviceId
+    //   }
+    // });
+
+
+  //   const socket = io(`${location.origin}`, {
+  //     auth: { userId },
+  //     transports: ['websocket'],
+  // });
+
+  const isLocalhost = window.location.hostname === 'localhost';
+  const socket = io(isLocalhost ? 'http://localhost:4000' : 'https://restaurant-chatbot-application-1.onrender.com', {
+    query: {
+      deviceId: deviceId
+    },
+    transports: ['websocket']
+  });
+  
+
+
 
     // Adding a conenction log
 

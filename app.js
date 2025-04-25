@@ -23,12 +23,21 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/restaurant-chatbot', {
-  // useNewUrlParser: true,
-  // useUnifiedTopology: true
-})
-.then(() => console.log('Connected to MongoDB'))
-.catch(err => console.error('MongoDB connection error:', err));
+// mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/restaurant-chatbot', {
+//   // useNewUrlParser: true,
+//   // useUnifiedTopology: true
+// })
+// .then(() => console.log('Connected to MongoDB'))
+// .catch(err => console.error('MongoDB connection error:', err));
+
+
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/restaurant-chatbot')
+  .then(() => console.log('✅ Connected to MongoDB'))
+  .catch(err => {
+    console.error(' MongoDB connection error:', err.message);
+    console.error(err.stack);
+  });
+
 
 // API Routes
 app.use('/api', apiRoutes);
@@ -56,7 +65,7 @@ io.on('connection', (socket) => {
   socket.on('user_message', async (message) => {
     try {
       if (message.toLowerCase() === 'pay') {
-        
+
         // Initialize payment
         const paymentData = await chatService.initializePayment(deviceId);
         if (paymentData.success) {

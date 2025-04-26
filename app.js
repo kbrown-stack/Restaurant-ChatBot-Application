@@ -6,7 +6,7 @@ const http = require('http');
 const socketIo = require('socket.io');
 
 const mongoose = require('mongoose');
-console.log('MONGO URI:', process.env.MONGODB_URI)
+// console.log('MONGO URI:', process.env.MONGODB_URI)
 
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -17,6 +17,10 @@ const apiRoutes = require('./routes/api');
 const chatService = require('./services/chatService');
 
 const app = express();
+
+
+
+
 const server = http.createServer(app);
 const io = socketIo(server);
 
@@ -35,6 +39,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://kbrownonuigbo:83JANEbrown@cluster0.trx316a.mongodb.net/restaurantChatBot')
+console.log(process.env.MONGODB_URI)
+
   .then(() => console.log('✅ Connected to MongoDB'))
   .catch(err => {
     console.error(' MongoDB connection error:', err.message);

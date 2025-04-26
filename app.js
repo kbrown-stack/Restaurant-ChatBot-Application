@@ -35,7 +35,7 @@ mongoose
     console.error(" MongoDB connection error:", err.message);
     console.error(err.stack);
   });
-console.log(process.env.MONGODB_URI);
+// console.log(process.env.MONGODB_URI);
 
 // API Routes
 app.use("/api", apiRoutes);

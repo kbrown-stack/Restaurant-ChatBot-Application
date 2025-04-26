@@ -4,7 +4,10 @@ require('dotenv').config();
 const express = require('express');
 const http = require('http');
 const socketIo = require('socket.io');
+
 const mongoose = require('mongoose');
+console.log('MONGO URI:', process.env.MONGODB_URI)
+
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -31,7 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // .catch(err => console.error('MongoDB connection error:', err));
 
 
-mongoose.connect(process.env.MONGODB_URI)
+mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://kbrownonuigbo:83JANEbrown@cluster0.trx316a.mongodb.net/restaurantChatBot')
   .then(() => console.log('✅ Connected to MongoDB'))
   .catch(err => {
     console.error(' MongoDB connection error:', err.message);

@@ -39,14 +39,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://kbrownonuigbo:83JANEbrown@cluster0.trx316a.mongodb.net/restaurantChatBot')
-console.log(process.env.MONGODB_URI)
-
-  .then(() => console.log('✅ Connected to MongoDB'))
+.then(() => console.log('✅ Connected to MongoDB'))
   .catch(err => {
     console.error(' MongoDB connection error:', err.message);
     console.error(err.stack);
   });
-
+  console.log(process.env.MONGODB_URI)
 
 // API Routes
 app.use('/api', apiRoutes);

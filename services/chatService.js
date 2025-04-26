@@ -131,7 +131,7 @@ class ChatService {
       const session = this.sessions[deviceId];
       session.expectingSchedule = false;
       
-      // Simple validation - expecting format like "2023-05-20 14:30"
+      // Simple validation - expecting format like "2025-04-20 10:30"
       const datePattern = /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$/;
       if (!datePattern.test(message)) {
         return `Invalid date format. Please use YYYY-MM-DD HH:MM format. 
@@ -194,7 +194,7 @@ ${this.getPaymentOptions(deviceId)}`;
       
       // Ask if user wants to schedule the order
       session.expectingSchedule = true;
-      return "Do you want to schedule this order for later? If yes, please provide date and time in format YYYY-MM-DD HH:MM (e.g., 2023-05-20 14:30). If no, just type 'no'.";
+      return "Do you want to schedule this order for later? If yes, please provide date and time in format YYYY-MM-DD HH:MM (e.g., 2025-04-20 10:30). If no, just type 'no'.";
       
     } catch (error) {
       console.error("Error in checkoutOrder:", error);

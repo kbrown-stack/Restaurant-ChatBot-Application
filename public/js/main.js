@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // });
 
   const isLocalhost = window.location.hostname === 'localhost';
-  const socket = io(isLocalhost ? 'http://localhost:4000' : 'https://restaurant-chatbot-application-1.onrender.com', {
+  const socket = io(isLocalhost ? 'http://localhost:4000' : 'https://restaurant-chatbot-application-2.onrender.com', {
     query: {
       deviceId: deviceId
     },
